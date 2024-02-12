@@ -1,8 +1,4 @@
-﻿using System;
-using System.Net;
-
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 using MVCWebApplicationUI.Models;

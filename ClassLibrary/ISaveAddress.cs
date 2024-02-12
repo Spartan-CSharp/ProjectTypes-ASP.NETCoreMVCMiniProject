@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ClassLibrary
+﻿namespace ClassLibrary
 {
 	public interface ISaveAddress
 	{

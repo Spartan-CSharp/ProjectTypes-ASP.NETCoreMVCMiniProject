@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -110,6 +108,7 @@ namespace MVCWebApplicationUI.Controllers
 					{
 						_person.Addresses.Add(address);
 					}
+
 					return RedirectToAction(nameof(Details), new { id = 5 });
 				}
 				else

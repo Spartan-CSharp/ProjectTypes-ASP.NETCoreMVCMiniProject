@@ -16,14 +16,7 @@ namespace MVCWebApplicationUI.Models
 		{
 			FirstName = personModel.FirstName;
 			LastName = personModel.LastName;
-			if ( personModel.IsActive == null )
-			{
-				IsActive = false;
-			}
-			else
-			{
-				IsActive = (bool)personModel.IsActive;
-			}
+			IsActive = personModel.IsActive != null && (bool)personModel.IsActive;
 			foreach ( AddressModel addressModel in personModel.Addresses )
 			{
 				Addresses.Add(new AddressViewModel(addressModel));
