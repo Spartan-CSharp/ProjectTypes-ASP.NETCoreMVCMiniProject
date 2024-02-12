@@ -22,18 +22,23 @@ namespace MVCWebApplicationUI.Controllers
 
 		public IActionResult Index()
 		{
+			_logger.LogInformation("GET, Home Controller, Index View, No Model");
 			return View();
 		}
 
 		public IActionResult Privacy()
 		{
+			_logger.LogInformation("GET, Home Controller, Privacy View, No Model");
 			return View();
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{
-			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+			string requestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+			ErrorViewModel errorViewModel = new ErrorViewModel { RequestId = requestId };
+			_logger.LogError("GET, Home Controller, Error View, Error View Model with requestId = {requestId}", requestId);
+			return View(errorViewModel);
 		}
 	}
 }

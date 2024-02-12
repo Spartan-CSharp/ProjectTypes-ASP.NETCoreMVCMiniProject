@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using MVCWebApplicationUI.Models;
+
 namespace MVCWebApplicationUI
 {
 	public class Startup
@@ -25,6 +27,8 @@ namespace MVCWebApplicationUI
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
+			services.AddSingleton<PersonViewModel>();
+			services.AddTransient<AddressViewModel>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

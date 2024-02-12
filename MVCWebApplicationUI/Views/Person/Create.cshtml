@@ -1,0 +1,93 @@
+﻿@model MVCWebApplicationUI.Models.PersonViewModel
+
+@{
+	ViewData["Title"] = "Create Person";
+}
+
+<h1>Create Person</h1>
+
+<h4>Person</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Create">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="FirstName" class="control-label"></label>
+				<input asp-for="FirstName" class="form-control" />
+				<span asp-validation-for="FirstName" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="LastName" class="control-label"></label>
+				<input asp-for="LastName" class="form-control" />
+				<span asp-validation-for="LastName" class="text-danger"></span>
+			</div>
+			<div class="form-group form-check">
+				<label class="form-check-label">
+					<input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+				</label>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Create" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+</div>
+<div class="row">
+	<h5>Address List</h5>
+	<p>
+		<a asp-controller="Address" asp-action="Create">Create New</a>
+	</p>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					Street Address
+				</th>
+				<th>
+					City
+				</th>
+				<th>
+					State
+				</th>
+				<th>
+					Zip Code
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach ( var item in Model.Addresses )
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.StreetAddress)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.City)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.State)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.ZipCode)
+					</td>
+					<td>
+						@Html.ActionLink("Edit", "Edit", new { id = item.PrimaryKey }) |
+						@Html.ActionLink("Details", "Details", new { id = item.PrimaryKey }) |
+						@Html.ActionLink("Delete", "Delete", new { id = item.PrimaryKey })
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+<div>
+	<a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
